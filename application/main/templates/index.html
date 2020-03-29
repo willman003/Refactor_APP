@@ -1,0 +1,24 @@
+{%extends 'layout_main.html'%}
+{%block content%}
+<div class="container-fluid">
+    <div class="row">
+        {%for item in list_product%}
+        <div class="col-sm-3 text-center">
+            <div class="card border-0" style="width: 18rem;" style="border: none;">
+                <a href="{{url_for('main.product_detail',id=item['id'])}}">
+                    <img src="{{url_for('static',filename='images/'+ item['id']|string +'.jpg')}}" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                  <div class="card-text">{{dict_category[item['category']]}}</div>
+                  <div class="card-text" style="color: grey; font-size: smaller;"><small>{{item['name']}}</small></div>
+                  <div class="card-text" style="color: grey; font-size: smaller;"><small>{{item['sell_price']}}$</small></div>
+                </div>
+            </div>
+        
+        </div>
+        {%endfor%}
+        
+    </div>
+</div>
+
+{%endblock%}
